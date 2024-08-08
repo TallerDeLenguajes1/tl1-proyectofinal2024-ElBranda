@@ -10,7 +10,7 @@ namespace PJ {
         private int damage=3;
         public bool dead=false;
 
-        public bool isShooting=false,isHit=false;
+        public bool isShooting=false,isHit=false,alreadyDamaged=false;
         private bool alreadyShot=false;
         private int shotPos;
         private int bulletX, bulletY, compBX, compBY;
@@ -28,12 +28,12 @@ namespace PJ {
 
         public int getY { get=>y; }
 
-        public int getBulletX { get=>bulletX; }
+        public int BulletX { get=>bulletX;set=>bulletX=value; }
 
-        public int getBulletY { get=>bulletY; }
+        public int BulletY { get=>bulletY;set=>bulletY=value; }
 
         public string Name { get=>name; set=>name=value; }
-        public int Damage { set=>damage=value; }
+        public int Damage { get=>damage;set=>damage=value; }
 
         public void Print() {
             if (x != compX || y != compY || pos != compPos) {
@@ -143,11 +143,22 @@ namespace PJ {
         public int Life { get {return life;} set{life=value;} }
         public int Kills { get {return kills;} set{kills=value;} }
         
-        public void Hit() {
-            life-=damage;
+        // private async Task HitLife() {
+        //     // Aplicar daño
+        //     life -= damage;
 
-            if (life <= 0) dead=true;
-        }
+        //     // Verificar si la vida es menor o igual a cero
+        //     if (life <= 0) {
+        //         dead = true;
+        //     } else {
+        //         // Esperar 2 segundos antes de permitir otro golpe
+        //         await Task.Delay(2000);
+        //     }
+        // }
+
+        // public async void Hit() {
+        //     await HitLife();
+        // }
 
 
         public void GunUp() {

@@ -22,7 +22,7 @@ namespace Cam {
             for (int i = Math.Max(0, player.getY - y - range); i < Math.Min(map.Length, player.getY - y + range + 5); i++) {
                 for (int j = Math.Max(0, player.getX - x - range); j < Math.Min(map[0].Length, player.getX - x + range + 5); j++) {
                     // Console.SetCursorPosition(0, 0);
-                    // //Console.WriteLine("                                                                  \n                                                                        \n                                                 ");
+                    // // //Console.WriteLine("                                                                  \n                                                                        \n                                                 ");
                     // Console.SetCursorPosition(0, 0);
                     // Console.WriteLine("X: "+map.Length+" Y: "+map[0].Length+"\nPlayerX: "+player.getX+" PlayerY: "+player.getY+"\ni: "+i+" j: "+j);
 

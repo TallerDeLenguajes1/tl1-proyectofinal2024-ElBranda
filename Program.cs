@@ -86,7 +86,7 @@ for (int i = 0; i < enemies.Length; i++) {
 
     enemies[i].Name = randomVehicle;/*(randomVehicle.Length>5?randomVehicle.Substring(0,5)+".":randomVehicle);*/
 
-    enemyTanks.Add(enemies[i].Name);
+    
 
     enemies[i].SetLimits(stage,5,5);
 }
@@ -151,17 +151,15 @@ if (com.Key == ConsoleKey.D2) {
 
 Console.Clear();
 
-GUI.Square(118, 7, 25, 5);
-GUI.Square(118, 12, 25, 10);
+GUI.Square(118, 7, 30, 5);
+GUI.Square(118, 12, 30, 10);
 Console.SetCursorPosition(120, 9);
-Console.Write("TANK: "+playerT.Name);
+Console.Write("TANK: "+(playerT.Name.Length>15?playerT.Name.Substring(0,15):playerT.Name));
 Console.SetCursorPosition(120, 13);
 Console.Write("ENEMIES:");
 
 while (true) {
     int totalDeath=0;
-    Console.SetCursorPosition(10, 0);
-    Console.Write(playerT.isHit);
     // Console.SetCursorPosition(120, 0);
     // Console.Write("LIFE:     ");
     // Console.SetCursorPosition(120, 0);
@@ -182,24 +180,29 @@ while (true) {
 
         if (!enemies[i].dead) {
             int rn = new Random().Next(0,5);
-            int move = new Random().Next(0,101);
-            int shothit = new Random().Next(0,101);
-            int gunmove = new Random().Next(0,101);
+            int move = new Random().Next(0,1501);
+            int shothit = new Random().Next(0,1501);
+            int gunmove = new Random().Next(0,1501);
             int rn2 = new Random().Next(0,5);
 
-            if (enemies[i].getX <= playerT.getBulletX && enemies[i].getX+4 >= playerT.getBulletX &&
-                enemies[i].getY <= playerT.getBulletY && enemies[i].getY+2 >= playerT.getBulletY) {
-                enemies[i].Hit();
+            if (enemies[i].getX <= playerT.BulletX && enemies[i].getX+4 >= playerT.BulletX &&
+                enemies[i].getY <= playerT.BulletY && enemies[i].getY+2 >= playerT.BulletY) {
+                enemies[i].Life-=playerT.Damage;
                 playerT.isHit = true;
-                if (enemies[i].dead) playerT.Kills++;
+                if (enemies[i].Life <=0) enemies[i].dead=true;
+                if (enemies[i].dead) {
+                    playerT.Kills++;
+                    enemyTanks.Add(enemies[i].Name);
+                }
             }
 
-            if (playerT.getX <= enemies[i].getBulletX && playerT.getX+4 >= enemies[i].getBulletX &&
-                playerT.getY <= enemies[i].getBulletY && playerT.getY+2 >= enemies[i].getBulletY) {
-                playerT.Hit();
+            if (playerT.getX <= enemies[i].BulletX && playerT.getX+4 >= enemies[i].BulletX &&
+                playerT.getY <= enemies[i].BulletY && playerT.getY+2 >= enemies[i].BulletY) {
+                playerT.Life-=enemies[i].Damage;
+                enemies[i].isHit=true;
             }
 
-            if (move > 80) {
+            if (move <10) {
                 if (rn==0) {
                     enemies[i].MoveUp();
                 } else if (rn==1) {
@@ -211,11 +214,11 @@ while (true) {
                 }
             }
 
-            if (shothit > 85) {
+            if (shothit <10) {
                 enemies[i].isShooting=true;
             }
 
-            if (gunmove > 85) {
+            if (gunmove <10) {
                 if (rn2==0) {
                     enemies[i].GunUp();
                 } else if (rn2==1) {
@@ -270,7 +273,7 @@ while (true) {
         }
     }
 
-    //Thread.Sleep(1);
+    Thread.Sleep(10);
 }
 
 playerT.Kills = 5;
