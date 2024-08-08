@@ -102,6 +102,7 @@ namespace PJ {
 
     class Tank {
         private int x, y;
+        private string name;
         private int compX, compY;
         private int pos=1, compPos;
         private int[][] stage;
@@ -114,9 +115,10 @@ namespace PJ {
         private int shotPos;
         private int bulletX, bulletY, compBX, compBY;
 
-        public Tank(int x, int y) {
+        public Tank(int x, int y, string name) {
             this.x = x;
             this.y = y;
+            this.name = name;
             compX = x;
             compY = y;
         }
@@ -129,6 +131,8 @@ namespace PJ {
 
         public int getBulletY { get=>bulletY; }
 
+        public string Name { get=>name; set=>name=value; }
+
         public void Print() {
             if (x != compX || y != compY || pos != compPos) {
                 Clear();
@@ -137,6 +141,9 @@ namespace PJ {
                 compY = y;
                 compPos = pos;
             }
+
+            //Console.SetCursorPosition(x+2-name.Length/2,y-1);
+            //Console.WriteLine(name);
 
             if (pos == 1) {
                 Console.SetCursorPosition(x,y);
@@ -219,7 +226,7 @@ namespace PJ {
             }
         }
 
-        public int setLife { set{value=life;} }
+        public int Life { get {return life;} set{life=value;} }
 
         public void Hit() {
             life-=3;
