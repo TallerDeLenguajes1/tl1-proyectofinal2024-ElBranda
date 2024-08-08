@@ -1,5 +1,5 @@
 {
-  "Kills": 200,
+  "Kills": 210,
   "Deaths": 12,
   "UsedTanks": [
     "Spitfire LF Mk IXc de Plagis",
@@ -27,7 +27,9 @@
     "F-4EJ Kai Phantom II",
     "F-84B-26",
     "VK 3002 (M)",
-    "Strikemaster Mk.88"
+    "Strikemaster Mk.88",
+    "SA.342L Gazelle",
+    "Pz.III F"
   ],
   "DestroyedTanks": [
     "HMS Armada",
@@ -59,6 +61,14 @@
     "Hampden TB Mk I",
     "Pz.III J1 TD",
     "P.7.T AA",
-    "\u2584T-28"
+    "\u2584T-28",
+    "U-SH 204 GK",
+    "\u25C4Sea Hawk Mk.100",
+    "M24 (TL)",
+    "Me 262 A-1a",
+    "Sea Gladiator Mk I",
+    "Gladiator Mk II",
+    "Yak-9UT",
+    "Do 335 A-1"
   ]
 }

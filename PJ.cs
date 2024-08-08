@@ -128,15 +128,17 @@ namespace PJ {
                 Console.Write(" ");
                 Console.SetCursorPosition(bulletX, bulletY);
                 Console.Write(" ");
+                bulletX=0; bulletY=0;
             }
 
-            if (stage[bulletY-cameraY][bulletX-cameraX]!=0) {
+            if (stage[compBY-cameraY][compBX-cameraX]!=0) {
                 alreadyShot=false;
                 isShooting=false;
                 Console.SetCursorPosition(compBX, compBY);
                 Console.Write(" ");
                 Console.SetCursorPosition(bulletX, bulletY);
                 Console.Write(" ");
+                bulletX=0; bulletY=0;
             }
         }
 

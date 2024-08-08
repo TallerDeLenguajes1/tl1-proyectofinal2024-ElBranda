@@ -57,7 +57,7 @@ List<string> enemyTanks = new List<string>();
 Tank playerT = new Tank(30,10,"");
 playerT.SetLimits(stage, 5,5);
 playerT.Life = 100;
-playerT.Damage = 5;
+playerT.Damage = 15;
 
 Tank[] enemies = new Tank[new Random().Next(2,7)];
 
@@ -176,7 +176,7 @@ while (true) {
     }
 
     for (int i = 0; i < enemies.Length; i++) {
-        GUI.TankLife((enemies[i].Name.Length>5?enemies[i].Name.Substring(0,5)+".":enemies[i].Name), enemies[i].Life, 120, 15+i);
+        GUI.TankLife((enemies[i].Name.Length>10?enemies[i].Name.Substring(0,10)+".":enemies[i].Name), enemies[i].Life, 120, 15+i);
 
         if (!enemies[i].dead) {
             int rn = new Random().Next(0,5);

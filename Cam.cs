@@ -66,27 +66,70 @@ namespace Cam {
             //         }
             //     }
             // }
+            // if (player.getX > takerX) {
+            //     for (int i = 0; i < range*4+5 && takerY-y-range+i < map.Length+8; i++) {
+            //         Console.SetCursorPosition(Math.Max(0,takerX-x-range+5), Math.Max(0,takerY-y-range)+i);
+            //         Console.Write(" ");
+            //     }
+            // } else if (player.getX < takerX) {
+            //     for (int i = 0; i < range*4+5 && takerY-y-range+i < map.Length+8; i++) {
+            //         Console.SetCursorPosition(takerX-x+range+9, Math.Max(0,takerY-y-range)+i);
+            //         Console.Write(" ");
+            //     }
+            // }
+
+            // if (player.getY < takerY) {
+            //     for (int i = 0; i < range*4+5 && takerY-y+range*4+5+i < map[0].Length; i++) {
+            //         Console.SetCursorPosition(Math.Max(0,takerX-x-range)+i, takerY-y+range+9);
+            //         Console.Write(" ");
+            //     }
+            // } else if (player.getY > takerY) {
+            //     for (int i = 0; i < range*4+5 && takerY-y+range*4+5+i < map[0].Length+8; i++) {
+            //         Console.SetCursorPosition(Math.Max(0,takerX-x-range)+i, Math.Max(0,player.getY-y-range+4));
+            //         Console.Write(" ");
+            //     }
+            // }
+
+            int consoleWidth = Console.WindowWidth;
+            int consoleHeight = Console.WindowHeight;
+
             if (player.getX > takerX) {
-                for (int i = 0; i < range*4+5 && takerY-y-range+i < map.Length+8; i++) {
-                    Console.SetCursorPosition(Math.Max(0,takerX-x-range+5), Math.Max(0,takerY-y-range)+i);
-                    Console.Write(" ");
+                for (int i = 0; i < range * 4 + 5 && takerY - y - range + i < map.Length + 8; i++) {
+                    int posX = Math.Max(0, takerX - x - range + 5);
+                    int posY = Math.Max(0, takerY - y - range) + i;
+                    if (posX < consoleWidth && posY < consoleHeight) {
+                        Console.SetCursorPosition(posX, posY);
+                        Console.Write(" ");
+                    }
                 }
             } else if (player.getX < takerX) {
-                for (int i = 0; i < range*4+5 && takerY-y-range+i < map.Length+8; i++) {
-                    Console.SetCursorPosition(takerX-x+range+9, Math.Max(0,takerY-y-range)+i);
-                    Console.Write(" ");
+                for (int i = 0; i < range * 4 + 5 && takerY - y - range + i < map.Length + 8; i++) {
+                    int posX = takerX - x + range + 9;
+                    int posY = Math.Max(0, takerY - y - range) + i;
+                    if (posX < consoleWidth && posY < consoleHeight) {
+                        Console.SetCursorPosition(posX, posY);
+                        Console.Write(" ");
+                    }
                 }
             }
 
             if (player.getY < takerY) {
-                for (int i = 0; i < range*4+5 && takerY-y+range*4+5+i < map[0].Length; i++) {
-                    Console.SetCursorPosition(Math.Max(0,takerX-x-range)+i, takerY-y+range+9);
-                    Console.Write(" ");
+                for (int i = 0; i < range * 4 + 5 && takerY - y + range * 4 + 5 + i < map[0].Length; i++) {
+                    int posX = Math.Max(0, takerX - x - range) + i;
+                    int posY = takerY - y + range + 9;
+                    if (posX < consoleWidth && posY < consoleHeight) {
+                        Console.SetCursorPosition(posX, posY);
+                        Console.Write(" ");
+                    }
                 }
             } else if (player.getY > takerY) {
-                for (int i = 0; i < range*4+5 && takerY-y+range*4+5+i < map[0].Length+8; i++) {
-                    Console.SetCursorPosition(Math.Max(0,takerX-x-range)+i, Math.Max(0,player.getY-y-range+4));
-                    Console.Write(" ");
+                for (int i = 0; i < range * 4 + 5 && takerY - y + range * 4 + 5 + i < map[0].Length + 8; i++) {
+                    int posX = Math.Max(0, takerX - x - range) + i;
+                    int posY = Math.Max(0, player.getY - y - range + 4);
+                    if (posX < consoleWidth && posY < consoleHeight) {
+                        Console.SetCursorPosition(posX, posY);
+                        Console.Write(" ");
+                    }
                 }
             }
 
