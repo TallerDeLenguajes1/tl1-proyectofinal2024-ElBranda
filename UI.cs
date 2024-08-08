@@ -18,6 +18,38 @@ namespace UI {
             Console.WriteLine("                \\/         \\/        \\/   \\__\\                      \\/       \\/  /__/");
         }
 
+        public void WinTitle(int x, int y) {
+            Console.SetCursorPosition(x,y);
+            Console.Write("_______  _____  __   _  ______  ______ _______ _______ _     _        _______ _______ _____  _____  __   _ _______   /   /   /");
+            Console.SetCursorPosition(x,y+1);
+            Console.Write("|       |     | | \\  | |  ____ |_____/ |_____|    |    |     | |      |_____|    |      |   |     | | \\  | |______  /   /   / ");
+            Console.SetCursorPosition(x,y+2);
+            Console.Write("|_____  |_____| |  \\_| |_____| |    \\_ |     |    |    |_____| |_____ |     |    |    __|__ |_____| |  \\_| ______| .   .   .  ");
+        }
+
+        public void GameOverTitle(int x, int y) {
+            Console.SetCursorPosition(x,y);
+            Console.Write("  ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███  ");
+            Console.SetCursorPosition(x,y+1);
+            Console.Write(" ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒");
+            Console.SetCursorPosition(x,y+2);
+            Console.Write("▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒");
+            Console.SetCursorPosition(x,y+3);
+            Console.Write("░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄  ");
+            Console.SetCursorPosition(x,y+4);
+            Console.Write("░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒");
+            Console.SetCursorPosition(x,y+5);
+            Console.Write("░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░");
+            Console.SetCursorPosition(x,y+6);
+            Console.Write(" ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░");
+            Console.SetCursorPosition(x,y+7);
+            Console.Write("░ ░   ░   ░   ▒   ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░ ");
+            Console.SetCursorPosition(x,y+8);
+            Console.Write("     ░       ░  ░       ░      ░  ░       ░ ░        ░     ░  ░   ░     ");
+            Console.SetCursorPosition(x,y+9);
+            Console.Write("                                                     ░                   ");
+        }
+
         public void Square(int x, int y, int tx, int ty) {
             Console.SetCursorPosition(x,y);
             Console.Write("╔");
@@ -58,5 +90,6 @@ namespace UI {
             Console.SetCursorPosition(x, y);
             Console.Write(n+": "+hearts);
         }
+
     }
 }

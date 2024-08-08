@@ -79,15 +79,19 @@ namespace Cam {
             }
 
             if (player.getY < takerY) {
-                for (int i = 0; i < range*4+5 && takerX-x-range+i < map[0].Length+8; i++) {
+                for (int i = 0; i < range*4+5 && takerY-y+range*4+5+i < map[0].Length; i++) {
                     Console.SetCursorPosition(Math.Max(0,takerX-x-range)+i, takerY-y+range+9);
                     Console.Write(" ");
                 }
             } else if (player.getY > takerY) {
-                for (int i = 0; i < range*4+5 && takerX-x-range+i < map[0].Length+8; i++) {
+                for (int i = 0; i < range*4+5 && takerY-y+range*4+5+i < map[0].Length+8; i++) {
                     Console.SetCursorPosition(Math.Max(0,takerX-x-range)+i, Math.Max(0,player.getY-y-range+4));
                     Console.Write(" ");
                 }
+            }
+
+            for (int k = 0; k < enemies.Length; k++) {
+                enemies[k].Clear();
             }
         }
 

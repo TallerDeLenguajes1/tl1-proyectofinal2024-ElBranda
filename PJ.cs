@@ -1,105 +1,4 @@
 namespace PJ {
-    class Player {
-        private int x, y;
-        private int compX, compY;
-        private int pos=1, compPos;
-        private int[][] stage;
-        private int pivotX, pivotY, limitX, limitY;
-        
-
-        public Player(int x, int y) {
-            this.x = x;
-            this.y = y;
-            compX = x;
-            compY = y;
-        }
-
-        public void Print() {
-            if (x != compX || y != compY || pos != compPos) {
-                Console.SetCursorPosition(compX,compY);
-                Console.WriteLine("     ");
-                Console.SetCursorPosition(compX,compY+1);
-                Console.WriteLine("     ");
-                Console.SetCursorPosition(compX,compY+2);
-                Console.WriteLine("     ");
-                
-                compX = x;
-                compY = y;
-                compPos = pos;
-            }
-
-            if (pos == 1) {
-                Console.SetCursorPosition(x,y);
-                Console.WriteLine(" _^_ ");
-                Console.SetCursorPosition(x,y+1);
-                Console.WriteLine("|___|");
-                Console.SetCursorPosition(x,y+2);
-                Console.WriteLine("[OOO]");
-            } else if (pos == 2) {
-                Console.SetCursorPosition(x,y);
-                Console.WriteLine(" ___ ");
-                Console.SetCursorPosition(x,y+1);
-                Console.WriteLine("|_O_|");
-                Console.SetCursorPosition(x,y+2);
-                Console.WriteLine("[OOO]");
-            } else if (pos == 3) {
-                Console.SetCursorPosition(x,y);
-                Console.WriteLine(" __  ");
-                Console.SetCursorPosition(x,y+1);
-                Console.WriteLine("|__|=");
-                Console.SetCursorPosition(x,y+2);
-                Console.WriteLine("[OOO]");
-            } else {
-                Console.SetCursorPosition(x,y);
-                Console.WriteLine("  __ ");
-                Console.SetCursorPosition(x,y+1);
-                Console.WriteLine("=|__|");
-                Console.SetCursorPosition(x,y+2);
-                Console.WriteLine("[OOO]");
-            }
-        }
-
-        public void GunUp() {
-            pos=1;
-        }
-
-        public void GunDwn() {
-            pos=2;
-        }
-
-        public void GunRgt() {
-            pos=3;
-        }
-
-        public void GunLft() {
-            pos=4;
-        }
-
-        public void MoveUp() {
-            if (stage[y-pivotY-1][x-pivotX] == 0) y--;
-        }
-
-        public void MoveDwn() {
-            if (stage[y-pivotY+3][x-pivotX] == 0) y++;
-        }
-
-        public void MoveRgt() {
-            if (stage[y-pivotY][x-pivotX+3] == 0) x++;
-        }
-
-        public void MoveLft() {
-            if (stage[y-pivotY][x-pivotX-1] == 0) x--;
-        }
-
-        public void SetLimits(int[][] stage, int pivotX, int pivotY, int limitX, int limitY) {
-            this.stage = stage;
-            this.pivotX = pivotX;
-            this.pivotY = pivotY;
-            this.limitX = limitX;
-            this.limitY = limitY;
-        }
-    }
-
     class Tank {
         private int x, y;
         private string name;
@@ -108,12 +7,14 @@ namespace PJ {
         private int[][] stage;
         private int cameraX, cameraY; 
         private int life=20;
+        private int damage=3;
         public bool dead=false;
 
-        public bool isShooting=false;
+        public bool isShooting=false,isHit=false;
         private bool alreadyShot=false;
         private int shotPos;
         private int bulletX, bulletY, compBX, compBY;
+        private int kills=0;
 
         public Tank(int x, int y, string name) {
             this.x = x;
@@ -132,6 +33,7 @@ namespace PJ {
         public int getBulletY { get=>bulletY; }
 
         public string Name { get=>name; set=>name=value; }
+        public int Damage { set=>damage=value; }
 
         public void Print() {
             if (x != compX || y != compY || pos != compPos) {
@@ -218,18 +120,31 @@ namespace PJ {
             else if (shotPos==3) bulletX++;
             else bulletX--;
 
+            if (isHit) {
+                isHit = false;
+                alreadyShot=false;
+                isShooting=false;
+                Console.SetCursorPosition(compBX, compBY);
+                Console.Write(" ");
+                Console.SetCursorPosition(bulletX, bulletY);
+                Console.Write(" ");
+            }
+
             if (stage[bulletY-cameraY][bulletX-cameraX]!=0) {
                 alreadyShot=false;
                 isShooting=false;
                 Console.SetCursorPosition(compBX, compBY);
                 Console.Write(" ");
+                Console.SetCursorPosition(bulletX, bulletY);
+                Console.Write(" ");
             }
         }
 
         public int Life { get {return life;} set{life=value;} }
-
+        public int Kills { get {return kills;} set{kills=value;} }
+        
         public void Hit() {
-            life-=3;
+            life-=damage;
 
             if (life <= 0) dead=true;
         }
